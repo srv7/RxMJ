@@ -1,0 +1,6 @@
+framework module Pods_RxMJ_Tests {
+  umbrella header "Pods-RxMJ_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}
