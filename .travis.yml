@@ -11,4 +11,4 @@ podfile: Example/Podfile
 # - pod install --project-directory=Example
 script:
 - pod repo update
-- pod lib lint
+- pod lib lint --allow-warnings
