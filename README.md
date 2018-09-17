@@ -3,7 +3,6 @@
 [![CI Status](https://img.shields.io/travis/srv7/RxMJ.svg?style=flat)](https://travis-ci.org/srv7/RxMJ)
 [![Version](https://img.shields.io/cocoapods/v/RxMJ.svg?style=flat)](https://cocoapods.org/pods/RxMJ)
 [![License](https://img.shields.io/cocoapods/l/RxMJ.svg?style=flat)](https://cocoapods.org/pods/RxMJ)
-[![Platform](https://img.shields.io/cocoapods/p/RxMJ.svg?style=flat)](https://cocoapods.org/pods/RxMJ)
 ![iOS 8.0+](https://img.shields.io/badge/iOS-8.0%2B-blue.svg)
 
 ## Example
