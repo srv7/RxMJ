@@ -13,6 +13,8 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Installation
 
+### CocoaPods
+
 RxMJ is available through [CocoaPods](https://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
@@ -20,9 +22,18 @@ it, simply add the following line to your Podfile:
 pod 'RxMJ'
 ```
 
+### Carthage
+
+RxMJ is available through [Carthage](https://github.com/Carthage/Carthage). To install
+it, simply add the following line to your Cartfile:
+
+```ruby
+github "srv7/RxMJ"
+```
+
 ## Author
 
-srv7, liubo@cloudist.cc
+srv7, liubo004@126.com
 
 ## License
 
