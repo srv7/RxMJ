@@ -11,7 +11,7 @@ MJRefresh with RxCocoa
   s.source           = { :git => 'https://github.com/srv7/RxMJ.git', :tag => s.version.to_s }
   s.ios.deployment_target = '8.0'
   s.source_files = 'RxMJ/Classes/**/*'
-  s.swift_version = '4.1'
+  s.swift_version = '4.2'
   s.frameworks = 'UIKit'
   s.dependency 'MJRefresh', '~> 3.1.15.7'
   s.dependency 'RxCocoa', '~> 4.3.0'
