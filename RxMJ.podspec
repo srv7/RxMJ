@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'RxMJ'
-  s.version          = '0.3.0'
+  s.version          = '0.4.0'
   s.summary          = 'MJ in Rx world'
   s.description      = <<-DESC
 MJRefresh with RxCocoa
