@@ -17,16 +17,13 @@ class ViewModel: ViewModelType {
     func transform(_ input: ViewModel.Input) -> ViewModel.Output {
         let header = input
             .headerRefresh
-            .flatMapLatest { _ in
-                return NetworkService.shared.getRandomResult(20).catchErrorJustReturn([])
-            }
+            .flatMapLatest { NetworkService.shared.getRandomResult(20).catchAndReturn([]) }
             .share(replay: 1)
         
         let footer = input
             .footerRefresh
-            .flatMapLatest { _ in
-                return NetworkService.shared.getRandomResult(19).catchErrorJustReturn([])
-            }.share(replay: 1)
+            .flatMapLatest { NetworkService.shared.getRandomResult(19).catchAndReturn([]) }
+            .share(replay: 1)
         
         let endHeader = header.map { _ in false }
             .asDriver(onErrorJustReturn: false)

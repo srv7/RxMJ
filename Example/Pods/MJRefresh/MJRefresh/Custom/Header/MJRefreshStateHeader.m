@@ -46,19 +46,12 @@
 }
 
 #pragma mark - 公共方法
-- (void)setTitle:(NSString *)title forState:(MJRefreshState)state
+- (instancetype)setTitle:(NSString *)title forState:(MJRefreshState)state
 {
-    if (title == nil) return;
+    if (title == nil) return self;
     self.stateTitles[@(state)] = title;
     self.stateLabel.text = self.stateTitles[@(self.state)];
-}
-
-#pragma mark - 日历获取在9.x之后的系统使用currentCalendar会出异常。在8.0之后使用系统新API。
-- (NSCalendar *)currentCalendar {
-    if ([NSCalendar respondsToSelector:@selector(calendarWithIdentifier:)]) {
-        return [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
-    }
-    return [NSCalendar currentCalendar];
+    return self;
 }
 
 #pragma mark key的处理
@@ -79,8 +72,8 @@
     
     if (lastUpdatedTime) {
         // 1.获得年月日
-        NSCalendar *calendar = [self currentCalendar];
-        NSUInteger unitFlags = NSCalendarUnitYear| NSCalendarUnitMonth | NSCalendarUnitDay |NSCalendarUnitHour |NSCalendarUnitMinute;
+        NSCalendar *calendar = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
+        NSUInteger unitFlags = NSCalendarUnitYear| NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute;
         NSDateComponents *cmp1 = [calendar components:unitFlags fromDate:lastUpdatedTime];
         NSDateComponents *cmp2 = [calendar components:unitFlags fromDate:[NSDate date]];
         
@@ -164,4 +157,14 @@
     // 重新设置key（重新显示时间）
     self.lastUpdatedTimeKey = self.lastUpdatedTimeKey;
 }
+@end
+
+#pragma mark - <<< 为 Swift 扩展链式语法 >>> -
+@implementation MJRefreshStateHeader (ChainingGrammar)
+
+- (instancetype)modifyLastUpdatedTimeText:(NSString * _Nonnull (^)(NSDate * _Nullable))handler {
+    self.lastUpdatedTimeText = handler;
+    return self;
+}
+
 @end

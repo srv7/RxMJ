@@ -37,7 +37,7 @@ class ViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        tableView.mj_header.beginRefreshing()
+        tableView.mj_header?.beginRefreshing()
     }
     
     override func viewDidLayoutSubviews() {
@@ -53,14 +53,14 @@ class ViewController: UIViewController {
     func bindViewModel() {
         
         let input = ViewModel.Input(
-            headerRefresh: tableView.mj_header.rx.refreshing.asObservable(),
-            footerRefresh: tableView.mj_footer.rx.refreshing.asObservable()
+            headerRefresh: tableView.mj_header!.rx.refreshing.asObservable(),
+            footerRefresh: tableView.mj_footer!.rx.refreshing.asObservable()
         )
         
         let output = viewModel.transform(input)
         
-        output.endHeaderRefresh.drive(tableView.mj_header.rx.isRefreshing).disposed(by: bag)
-        output.endFooterRefresh.drive(tableView.mj_footer.rx.refreshFooterState).disposed(by: bag)
+        output.endHeaderRefresh.drive(tableView.mj_header!.rx.isRefreshing).disposed(by: bag)
+        output.endFooterRefresh.drive(tableView.mj_footer!.rx.refreshFooterState).disposed(by: bag)
         
         output.tableData.skip(1)
             .bind(to: tableView.rx.items) { table, row, element in

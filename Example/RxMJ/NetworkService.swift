@@ -24,10 +24,10 @@ class NetworkService {
             observer.onNext(items)
             observer.onCompleted()
             return Disposables.create()
-            }
-            .delay(2, scheduler: ConcurrentDispatchQueueScheduler.init(qos: .default))
-            .subscribeOn(ConcurrentDispatchQueueScheduler.init(qos: .default))
-            .observeOn(MainScheduler.instance)
+        }
+        .delay(.seconds(2), scheduler: ConcurrentDispatchQueueScheduler.init(qos: .default))
+        .subscribe(on: ConcurrentDispatchQueueScheduler(qos: .default))
+        .observe(on: MainScheduler.instance)
     }
 }
 
