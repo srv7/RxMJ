@@ -1,0 +1,24 @@
+name: Swift
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install Dependencies
+      run: |
+        cd Example
+        pod install --repo-update
+      shell: bash
+    - name: Lint
+      run:
+        pod lib lint --allow-warnings
+      shell: bash
